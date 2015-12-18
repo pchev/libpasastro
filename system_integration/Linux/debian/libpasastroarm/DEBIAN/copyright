@@ -1,0 +1,18 @@
+
+Copyright: 2015 Patrick Chevalley <pch@ap-i.net>
+
+Information :
+Name        : libpasastro
+Version     : 1.0.0
+Release     : 1
+Group       : Sciences/Astronomy
+License     : GPL-2+
+Packager    : Patrick Chevalley
+URL         : http://libpasastro.sourceforge.net
+Summary     : Pascal language friendly interface to astronomy libraries
+Description :
+Provide shared libraries to interface Pascal program with standard astronomy libraries.
+libpasgetdss.so : Interface with GetDSS to work with DSS images.
+libpasplan404.so: Interface with Plan404 to compute planets position.
+libpaswcs.so    : Interface with libwcs to work with FITS WCS.
+ 
