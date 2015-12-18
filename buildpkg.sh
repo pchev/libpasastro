@@ -10,12 +10,17 @@ arch=$(arch)
 
 unset make_linux32
 unset make_linux64
+unset make_linuxarm
 
 if [[ $arch == i686 ]]; then 
    make_linux32=1
 fi
 if [[ $arch == x86_64 ]]; then 
    make_linux64=1
+   make_linux32=1
+fi
+if [[ $arch == armv7l ]]; then 
+   make_linuxarm=1
 fi
 
 save_PATH=$PATH
@@ -112,7 +117,7 @@ if [[ $make_linux64 ]]; then
   rsync -a --exclude=.svn system_integration/Linux/rpm $builddir
   cd $builddir
   mv debian/libpasastro64/usr/* rpm/libpasastro/usr/
-  # Redhat 64bits lib is lib64 
+  # Redhat 64bits lib is lib64
   mv rpm/libpasastro/usr/lib rpm/libpasastro/usr/lib64
   cd rpm
   sed -i "/Version:/ s/1/$version/"  SPECS/libpasastro64.spec
@@ -121,6 +126,39 @@ if [[ $make_linux64 ]]; then
   fakeroot rpmbuild  --buildroot "$builddir/rpm/libpasastro" --define "_topdir $builddir/rpm/" --define "_binary_payload w7.xzdio"  -bb SPECS/libpasastro64.spec
   if [[ $? -ne 0 ]]; then exit 1;fi
   mv RPMS/x86_64/libpasastro*.rpm $wd
+  if [[ $? -ne 0 ]]; then exit 1;fi
+
+  cd $wd
+  rm -rf $builddir
+fi
+
+# make Linux arm version
+if [[ $make_linuxarm ]]; then
+  make CPU_TARGET=armv7l OS_TARGET=linux clean
+  make CPU_TARGET=armv7l OS_TARGET=linux
+  if [[ $? -ne 0 ]]; then exit 1;fi
+  make install PREFIX=$builddir
+  if [[ $? -ne 0 ]]; then exit 1;fi
+  # tar
+  cd $builddir
+  cd ..
+  tar cvJf libpasastro-$version-$currentrev-linux_armhf.tar.xz libpasastro
+  if [[ $? -ne 0 ]]; then exit 1;fi
+  mv libpasastro*.tar.xz $wd
+  if [[ $? -ne 0 ]]; then exit 1;fi
+  # deb
+  cd $wd
+  rsync -a --exclude=.svn system_integration/Linux/debian $builddir
+  cd $builddir
+  mv lib debian/libpasastro/usr/
+  mv share debian/libpasastroarm/usr/
+  cd debian
+  sz=$(du -s libpasastroarm/usr | cut -f1)
+  sed -i "s/%size%/$sz/" libpasastroarm/DEBIAN/control
+  sed -i "/Version:/ s/1/$version-$currentrev/" libpasastroarm/DEBIAN/control
+  fakeroot dpkg-deb -Zxz --build libpasastroarm .
+  if [[ $? -ne 0 ]]; then exit 1;fi
+  mv libpasastro*.deb $wd
   if [[ $? -ne 0 ]]; then exit 1;fi
 
   cd $wd
