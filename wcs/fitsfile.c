@@ -1583,7 +1583,7 @@ char	*image;		/* FITS image pixels */
 	if (!access (filename, 0)) {
 	    fd = open (filename, O_WRONLY);
 	    if (fd < 3) {
-		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writeable\n", filename);
+		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writable\n", filename);
 		return (0);
 		}
 	    }
@@ -1622,7 +1622,7 @@ char	*image;		/* FITS image pixels */
 	if (!access (filename, 0)) {
 	    fd = open (filename, O_WRONLY);
 	    if (fd < 3) {
-		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writeable\n",
+		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writable\n",
 			 filename);
 		return (0);
 		}
@@ -1884,7 +1884,7 @@ char	*filename0;	/* Name of input FITS image file */
     if (!access (filename, 0)) {
 	fdout = open (filename, O_WRONLY);
 	if (fdout < 3) {
-	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writeable\n", filename);
+	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writable\n", filename);
 	    return (0);
 	    }
 	}
@@ -1970,7 +1970,7 @@ char	*header;	/* FITS image header */
     if (!access (filename, 0)) {
 	fd = open (filename, O_WRONLY);
 	if (fd < 3) {
-	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writeable\n", filename);
+	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writable\n", filename);
 	    return (0);
 	    }
 	}
@@ -2072,7 +2072,7 @@ char	*header;	/* FITS image header */
     if (ext != NULL)
 	*ext = cext;
     if (fd < 3) {
-	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writeable\n", filename);
+	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writable\n", filename);
 	return (-1);
 	}
 
