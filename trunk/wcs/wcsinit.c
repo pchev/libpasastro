@@ -399,11 +399,11 @@ char *wchar;		/* Suffix character for one of multiple WCS */
 	}
 
     /* World coordinate system reference coordinate information */
-    if (hgetsc (hstring, "CTYPE1", &mchar, 16, ctype1)) {
+    if (hgetsc (hstring, "CTYPE1", &mchar, 9, ctype1)) {
 
 	/* Read second coordinate type */
 	strcpy (ctype2, ctype1);
-	if (!hgetsc (hstring, "CTYPE2", &mchar, 16, ctype2))
+	if (!hgetsc (hstring, "CTYPE2", &mchar, 9, ctype2))
 	    twod = 0;
 	else
 	    twod = 1;

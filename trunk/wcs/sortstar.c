@@ -417,6 +417,8 @@ int	nm;		/* Number of magnitudes per star */
 	hasnum = 1;
     if (spra != NULL && spdec != NULL)
 	haspm = 1;
+    else
+	haspm = 0;
     if (sx != NULL && sy != NULL)
 	hasxy = 1;
     else
