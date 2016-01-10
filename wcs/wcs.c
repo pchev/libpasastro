@@ -1,8 +1,8 @@
 /*** File libwcs/wcs.c
- *** September 1, 2011
- *** By Doug Mink, dmink@cfa.harvard.edu
+ *** October 19, 2012
+ *** By Jessica Mink, jmink@cfa.harvard.edu
  *** Harvard-Smithsonian Center for Astrophysics
- *** Copyright (C) 1994-2011
+ *** Copyright (C) 1994-2012
  *** Smithsonian Astrophysical Observatory, Cambridge, MA, USA
 
     This library is free software; you can redistribute it and/or
@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
     Correspondence concerning WCSTools should be addressed as follows:
-           Internet email: dmink@cfa.harvard.edu
-           Postal address: Doug Mink
+           Internet email: jmink@cfa.harvard.edu
+           Postal address: Jessica Mink
                            Smithsonian Astrophysical Observatory
                            60 Garden St.
                            Cambridge, MA 02138 USA
@@ -1434,7 +1434,7 @@ double	x1,y1;	/* (RA,Dec) or (Long,Lat) in degrees */
 double	x2,y2;	/* (RA,Dec) or (Long,Lat) in degrees */
 
 {
-	double d1, d2, r, diffi;
+	double r, diffi;
 	double pos1[3], pos2[3], w, diff;
 	int i;
 
@@ -1469,7 +1469,7 @@ double	x1,y1;	/* (RA,Dec) or (Long,Lat) in degrees */
 double	x2,y2;	/* (RA,Dec) or (Long,Lat) in degrees */
 
 {
-	double d1, d2, r, diffi;
+	double d1, d2, r;
 	double pos1[3], pos2[3], w, diff;
 	int i;
 
@@ -2223,7 +2223,6 @@ char	*coorsys;	/* Input world coordinate system:
 double	*xpix,*ypix;	/* Image coordinates in pixels */
 int	*offscl;	/* 0 if within bounds, else off scale */
 {
-    struct WorldCoor *depwcs;	/* Dependent WCS structure */
     double xp, yp, xpi, ypi;
     double eqin, eqout;
     int sysin;
@@ -2332,7 +2331,7 @@ double  *ypos;           /* y (dec) coordinate (deg) */
 {
     int offscl;
     int i;
-    int wcsrev1();
+    int wcsrev();
     double wcscrd[4], imgcrd[4], pixcrd[4];
     double phi, theta;
     
@@ -2349,7 +2348,7 @@ double  *ypos;           /* y (dec) coordinate (deg) */
     pixcrd[3] = 1.0;
     for (i = 0; i < 4; i++)
 	imgcrd[i] = 0.0;
-    offscl = wcsrev1 ((void *)&wcs->ctype, &wcs->wcsl, pixcrd, &wcs->lin, imgcrd,
+    offscl = wcsrev ((void *)&wcs->ctype, &wcs->wcsl, pixcrd, &wcs->lin, imgcrd,
 		    &wcs->prj, &phi, &theta, wcs->crval, &wcs->cel, wcscrd);
     if (offscl == 0) {
 	*xpos = wcscrd[wcs->wcsl.lng];
@@ -2380,7 +2379,7 @@ double  *ypix;          /* y pixel number  (dec or lat without rotation) */
     *xpix = 0.0;
     *ypix = 0.0;
     if (wcs->wcsl.flag != WCSSET) {
-	if (wcsset1 (wcs->lin.naxis, (void *)&wcs->ctype, &wcs->wcsl) )
+	if (wcsset (wcs->lin.naxis, (void *)&wcs->ctype, &wcs->wcsl) )
 	    return (1);
 	}
 
@@ -2989,4 +2988,7 @@ char *cwcs;	/* Keyword suffix character for output WCS */
  * Mar 17 2011	Fix WCSDEP bug found by Ed Los
  * May  9 2011	Free WCS structure recursively if WCSDEP is used
  * Sep  1 2011	Add TPV projection type for SCAMP TAN with PVs
+ *
+ * Oct 19 2012	Drop d1 and d2 from wcsdist(); diffi from wcsdist1()
+ * Oct 19 2012	Drop depwcs; it's in main wcs structure
  */
