@@ -242,10 +242,7 @@ char *wchar;		/* Suffix character for one of multiple WCS */
     double ut;
     int nax;
     int twod;
-    extern int tnxinit();
     extern int zpxinit();
-    extern int platepos();
-    extern int dsspos();
     void invert_wcs();
 
     wcs = (struct WorldCoor *) calloc (1, sizeof(struct WorldCoor));
@@ -407,24 +404,22 @@ char *wchar;		/* Suffix character for one of multiple WCS */
 	    twod = 0;
 	else
 	    twod = 1;
-	strcpy (wcs->ctype[0], ctype1);
-	strcpy (wcs->ctype[1], ctype2);
 	if (strsrch (ctype2, "LAT") || strsrch (ctype2, "DEC"))
 	    ilat = 2;
 	else
 	    ilat = 1;
-
-	/* Read third and fourth coordinate types, if present */
-	strcpy (wcs->ctype[2], "");
-	hgetsc (hstring, "CTYPE3", &mchar, 9, wcs->ctype[2]);
-	strcpy (wcs->ctype[3], "");
-	hgetsc (hstring, "CTYPE4", &mchar, 9, wcs->ctype[3]);
 
 	/* Set projection type in WCS data structure */
 	if (wcstype (wcs, ctype1, ctype2)) {
 	    wcsfree (wcs);
 	    return (NULL);
 	    }
+	    
+	/* Read third and fourth coordinate types, if present */
+	strcpy (wcs->ctype[2], "");
+	hgetsc (hstring, "CTYPE3", &mchar, 9, wcs->ctype[2]);
+	strcpy (wcs->ctype[3], "");
+	hgetsc (hstring, "CTYPE4", &mchar, 9, wcs->ctype[3]);
 
 	/* Get units, if present, for linear coordinates */
 	if (wcs->prjcode == WCS_LIN) {
