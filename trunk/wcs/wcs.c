@@ -383,26 +383,28 @@ char	*ctype2;	/* FITS WCS projection for axis 2 */
     strcpy (ctypes[33], "TPV");
 
     /* Initialize distortion types */
-    strcpy (dtypes[1], "SIP");
 
     if (!strncmp (ctype1, "LONG",4))
 	strncpy (ctype1, "XLON",4);
-
-    strcpy (wcs->ctype[0], ctype1);
-    strcpy (wcs->c1type, ctype1);
-    strcpy (wcs->ptype, ctype1);
-
+    /* First coordinate type */
+    
     /* Linear coordinates */
-    if (!strncmp (ctype1,"LINEAR",6))
+    if (!strncmp (ctype1,"LINEAR",6)) {
 	wcs->prjcode = WCS_LIN;
+        strcpy (wcs->ctype[0], "LINEAR");
+    }
 
     /* Pixel coordinates */
-    else if (!strncmp (ctype1,"PIXEL",6))
+    else if (!strncmp (ctype1,"PIXEL",5)) {
 	wcs->prjcode = WCS_PIX;
+	strcpy (wcs->ctype[0], "PIXEL");
+    }
 
     /*Detector pixel coordinates */
-    else if (strsrch (ctype1,"DET"))
+    else if (strsrch (ctype1,"DET")) {  
 	wcs->prjcode = WCS_PIX;
+	strcpy (wcs->ctype[0], "PIXEL");
+    }
 
     /* Set up right ascension, declination, latitude, or longitude */
     else if (ctype1[0] == 'R' || ctype1[0] == 'D' ||
@@ -502,8 +504,12 @@ char	*ctype2;	/* FITS WCS projection for axis 2 */
     /* If not sky coordinates, assume linear */
     else {
 	wcs->prjcode = WCS_LIN;
+	strcpy (wcs->ctype[0], "LINEAR");
 	return (0);
 	}
+
+    strcpy (wcs->c1type, wcs->ctype[0]);
+    strcpy (wcs->ptype, wcs->ctype[0]);
 
     /* Second coordinate type */
     if (!strncmp (ctype2, "NPOL",4)) {
@@ -522,16 +528,18 @@ char	*ctype2;	/* FITS WCS projection for axis 2 */
 	}
     else
 	wcs->latbase = 0;
-    strcpy (wcs->ctype[1], ctype2);
-    strcpy (wcs->c2type, ctype2);
 
     /* Linear coordinates */
-    if (!strncmp (ctype2,"LINEAR",6))
+    if (!strncmp (ctype2,"LINEAR",6)) {
 	wcs->prjcode = WCS_LIN;
+	strcpy (wcs->ctype[1], "LINEAR");
+    }
 
     /* Pixel coordinates */
-    else if (!strncmp (ctype2,"PIXEL",6))
+    else if (!strncmp (ctype2,"PIXEL",5)) {  
 	wcs->prjcode = WCS_PIX;
+	strcpy (wcs->ctype[1], "PIXEL");
+    }
 
     /* Set up right ascension, declination, latitude, or longitude */
     else if (ctype2[0] == 'R' || ctype2[0] == 'D' ||
@@ -583,7 +591,9 @@ char	*ctype2;	/* FITS WCS projection for axis 2 */
     /* If not sky coordinates, assume linear */
     else {
 	wcs->prjcode = WCS_LIN;
+	strcpy (wcs->ctype[1], "LINEAR");
 	}
+    strcpy (wcs->c2type, wcs->ctype[1]);
 
     /* Set distortion code from CTYPE1 extension */
     setdistcode (wcs, ctype1);
