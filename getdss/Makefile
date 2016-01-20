@@ -12,7 +12,7 @@ SO_Name = libgetdss.dylib
 LDFLAGS=  -Wl,-single_module -dynamiclib  -lc -lm -lstdc++ -mmacosx-version-min=10.6
 else
 SOName = libpasgetdss.so.1
-SO_Name = libpasgetdss.so.1.0
+SO_Name = libpasgetdss.so.1.1
 LDFLAGS= -shared -Wl,-soname,$(SOName) $(arch_flags)
 endif
 
