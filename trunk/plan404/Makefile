@@ -14,7 +14,7 @@ CFLAGS        = -O3 -fPIC $(arch_flags) -Wno-implicit-function-declaration
 LIBFLAGS      = -Wl,-single_module -dynamiclib  -lc -lm -mmacosx-version-min=10.6
 else
 SOName        = libpasplan404.so.1
-SO_Name       = libpasplan404.so.1.0
+SO_Name       = libpasplan404.so.1.1
 LIBFLAGS      = -shared -Wl,-soname,$(SOName) -lc -lm
 endif
 ifneq ($(findstring W32,$(OSTYPE)),)

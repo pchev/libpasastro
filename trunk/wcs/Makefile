@@ -11,7 +11,7 @@ SO_Name       = libcdcwcs.dylib
 LIBFLAGS      = -Wl,-single_module -dynamiclib  -lc -lm -mmacosx-version-min=10.6
 else
 SOName        = libpaswcs.so.1
-SO_Name       = libpaswcs.so.1.0
+SO_Name       = libpaswcs.so.1.1
 LIBFLAGS      = -shared -Wl,-soname,$(SOName) -lc -lm
 endif
 ifneq ($(findstring W32,$(OSTYPE)),)
