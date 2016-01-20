@@ -150,7 +150,7 @@ if [[ $make_linuxarm ]]; then
   cd $wd
   rsync -a --exclude=.svn system_integration/Linux/debian $builddir
   cd $builddir
-  mv lib debian/libpasastro/usr/
+  mv lib debian/libpasastroarm/usr/
   mv share debian/libpasastroarm/usr/
   cd debian
   sz=$(du -s libpasastroarm/usr | cut -f1)
