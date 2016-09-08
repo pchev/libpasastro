@@ -832,7 +832,7 @@ int	ndy;	/* Number of rows over which to compute the median */
 int	bitpix;	/* Number of bits in pixels; negative are floating point */
 
 {
-    if (bitpix == 16) {
+    if (bitpix == 8) {
 	unsigned char cval, *cbuff;
 	cval = (char) 0;
 	cbuff = (unsigned char *) buff;
