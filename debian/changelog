@@ -1,0 +1,5 @@
+libpasastro (1.1.0) experimental; urgency=low
+
+  * Fix TAN-SIP FITS keyword
+
+ -- Patrick Chevalley <pch@ap-i.net>  Thu, 02 Feb 2017 14:34:33 +0100
