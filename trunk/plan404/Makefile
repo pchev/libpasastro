@@ -35,6 +35,7 @@ ura404.c nep404.c plu404.c gplan.c cmoon.c precess.c epsiln.c nutate.c
 # Object files
 OBJ_DIR = ./obj
 OBJ := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
+LIBS = -lm
 
 all: $(SO_Name)
 
@@ -42,7 +43,7 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(SO_Name): $(OBJ)
-	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJ)
+	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJ) $(LIBS)
 
 clean:
 	rm -f $(OBJ) $(SO_Name)
