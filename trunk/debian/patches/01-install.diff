@@ -1,0 +1,24 @@
+Index: install.sh
+===================================================================
+--- a/install.sh
++++ b/install.sh
+@@ -3,7 +3,7 @@
+ destdir=$1
+ 
+ if [ -z "$destdir" ]; then
+-   export destdir=/tmp/libpasastro
++   export destdir=./usr
+ fi
+ 
+ echo Install LibPasAstro to $destdir
+@@ -17,6 +17,10 @@
+ install -v -m 644 -s getdss/libpasgetdss.so.*  $destdir/lib/
+ install -v -m 644 -s plan404/libpasplan404.so.*  $destdir/lib/
+ install -v -m 644 -s wcs/libpaswcs.so.*  $destdir/lib/
++ldconfig -N $destdir/lib
++ln -s $destdir/lib/libpasgetdss.so.1 $destdir/lib/libpasgetdss.so
++ln -s $destdir/lib/libpasplan404.so.1 $destdir/lib/libpasplan404.so
++ln -s $destdir/lib/libpaswcs.so.1 $destdir/lib/libpaswcs.so
+ install -v -m 644 changelog $destdir/share/doc/libpasastro/changelog
+ install -v -m 644 copyright $destdir/share/doc/libpasastro/copyright
+ 
