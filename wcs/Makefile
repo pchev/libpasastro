@@ -30,11 +30,12 @@ OBJS =	cdcwcs.o imgetwcs.o daoread.o wcscon.o \
 	worldpos.o tnxpos.o zpxpos.o dsspos.o platepos.o \
 	sortstar.o iget.o fileutil.o \
 	wcslib.o lin.o cel.o proj.o sph.o wcstrig.o distort.o poly.o
+LIBS = -lm
 
 all: $(SO_Name)
 
 $(SO_Name): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJS)
+	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJS) $(LIBS)
 
 cdcwcs.o:	fitsfile.h wcs.h
 actread.o:	fitsfile.h wcscat.h wcs.h fitshead.h wcslib.h
