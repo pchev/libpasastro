@@ -1,0 +1,12 @@
+Package: libpasastro
+Version: 1
+Section: education
+Priority: optional
+Maintainer: Patrick Chevalley <pch@ap-i.net>
+Architecture: arm64
+Installed-Size: %size%
+Depends: libc6
+Description: Provide shared libraries to interface Pascal program with standard astronomy libraries.
+ libpasgetdss.so : Interface with GetDSS to work with DSS images.
+ libpasplan404.so: Interface with Plan404 to compute planets position.
+ libpaswcs.so    : Interface with libwcs to work with FITS WCS.

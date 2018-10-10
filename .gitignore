@@ -1,0 +1,5 @@
+*.o
+*.so.1.*
+last.build
+*.tar.xz
+*.deb
