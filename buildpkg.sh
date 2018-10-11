@@ -34,7 +34,7 @@ wd=`pwd`
 # check if new revision since last run
 if [[ ! -e last.build ]];  then echo 0 > last.build; fi
 read lastrev <last.build
-currentrev=$(LANG=C svn info . | grep Revision: | sed 's/Revision: //')
+currentrev=$(git rev-list --count --first-parent HEAD)
 if [[ -z $currentrev ]]; then currentrev=1; fi
 echo $lastrev ' - ' $currentrev
 if [[ $lastrev -ne $currentrev ]]; then
