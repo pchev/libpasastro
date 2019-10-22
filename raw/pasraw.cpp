@@ -17,11 +17,13 @@ struct TImgInfo
    int imgheight;
    int topmargin;
    int leftmargin;
+   char bayerpattern[4];
    unsigned short *bitmap;
 };
 
 LibRaw RawProcessor;
 #define S RawProcessor.imgdata.sizes
+#define P RawProcessor.imgdata.idata
 
 extern "C" int loadraw(char *rawinput, int inputsize)
 {
@@ -34,8 +36,9 @@ extern "C" int loadraw(char *rawinput, int inputsize)
     {
       return(ret);
     }
+    ret = RawProcessor.adjust_sizes_info_only();
 
-    if (!(RawProcessor.imgdata.idata.filters || RawProcessor.imgdata.idata.colors == 1))
+    if (!(P.filters || P.colors == 1)) 
     {
       return(-1);
     }
@@ -60,6 +63,15 @@ extern "C" int getinfo(TImgInfo *info)
    info->topmargin = S.top_margin;
    info->leftmargin = S.left_margin;
    info->bitmap = RawProcessor.imgdata.rawdata.raw_image;
+   if (P.filters)
+   {
+     if (!P.cdesc[3])
+       P.cdesc[3] = 'G';
+     info->bayerpattern[0] = P.cdesc[RawProcessor.COLOR(0, 0)];
+     info->bayerpattern[1] = P.cdesc[RawProcessor.COLOR(0, 1)];
+     info->bayerpattern[2] = P.cdesc[RawProcessor.COLOR(1, 0)];
+     info->bayerpattern[3] = P.cdesc[RawProcessor.COLOR(1, 1)];
+   }
    return(0);
 }    
 
