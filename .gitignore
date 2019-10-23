@@ -3,3 +3,4 @@
 last.build
 *.tar.xz
 *.deb
+*.rpm

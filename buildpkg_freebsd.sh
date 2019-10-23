@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-version=1.1
+version=1.2
 
 builddir=/tmp/libpasastro  # Be sure this is set to a non existent directory, it is removed after the run!
 

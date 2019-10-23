@@ -17,6 +17,7 @@ install -m 755 -d $destdir/share/doc/libpasastro
 install -v -m 644 -s getdss/libpasgetdss.so.*  $destdir/lib/
 install -v -m 644 -s plan404/libpasplan404.so.*  $destdir/lib/
 install -v -m 644 -s wcs/libpaswcs.so.*  $destdir/lib/
+install -v -m 644 -s raw/libpasraw.so.*  $destdir/lib/
 install -v -m 644 changelog $destdir/share/doc/libpasastro/changelog
 install -v -m 644 copyright $destdir/share/doc/libpasastro/copyright
 

@@ -1,4 +1,10 @@
-libpasastro (1.1.0) experimental; urgency=low
+libpasastro (1.2.0) experimental; urgency=low
+
+  * Add libraw interface
+
+ -- Patrick Chevalley <pch@ap-i.net>  Wed Oct 23 21:51:45 CEST 2019
+
+ libpasastro (1.1.0) experimental; urgency=low
 
   * Fix TAN-SIP FITS keyword
 

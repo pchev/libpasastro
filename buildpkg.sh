@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-version=1.1
+version=1.2
 
 builddir=/tmp/libpasastro  # Be sure this is set to a non existent directory, it is removed after the run!
 
@@ -18,7 +18,6 @@ if [[ $arch == i686 ]]; then
 fi
 if [[ $arch == x86_64 ]]; then 
    make_linux64=1
-   make_linux32=1
 fi
 if [[ $arch == armv7l ]]; then 
    make_linuxarm=1
@@ -77,6 +76,7 @@ if [[ $make_linux32 ]]; then
   cd $wd
   rsync -a --exclude=.svn system_integration/Linux/rpm $builddir
   cd $builddir
+  mkdir -p rpm/libpasastro/usr/
   mv debian/libpasastro/usr/* rpm/libpasastro/usr/
   cd rpm
   sed -i "/Version:/ s/1/$version/"  SPECS/libpasastro.spec
@@ -123,6 +123,7 @@ if [[ $make_linux64 ]]; then
   cd $wd
   rsync -a --exclude=.svn system_integration/Linux/rpm $builddir
   cd $builddir
+  mkdir -p rpm/libpasastro/usr/
   mv debian/libpasastro64/usr/* rpm/libpasastro/usr/
   # Redhat 64bits lib is lib64
   mv rpm/libpasastro/usr/lib rpm/libpasastro/usr/lib64

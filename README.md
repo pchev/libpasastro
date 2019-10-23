@@ -5,6 +5,7 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
 - libpasgetdss.so : Interface with GetDSS to work with DSS images.
 - libpasplan404.so: Interface with Plan404 to compute planets position.
 - libpaswcs.so : Interface with libwcs to work with FITS WCS.
+- libpasraw.so : Interface with libraw to decode camera raw files.
 
 This libraries are used with the following projects:
 - skychart
