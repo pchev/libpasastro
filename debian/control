@@ -1,25 +1,15 @@
 Source: libpasastro
+Section: education
 Priority: optional
-Maintainer: pch <pch@ap-i.net>
-Build-Depends: debhelper (>=9), libc6-dev
-Standards-Version: 3.9.8
-Section: libs
-Homepage: https://sourceforge.net/projects/libpasastro/
-
-Package: libpasastro-dev
-Section: libdevel
-Architecture: any
-Depends: libpasastro (= ${binary:Version}), ${misc:Depends}, libc6-dev
-Description: Interface Pascal program with standard astronomy libraries.
- libpasgetdss.so : Interface with GetDSS to work with DSS images.
- libpasplan404.so: Interface with Plan404 to compute planets position.
- libpaswcs.so : Interface with libwcs to work with FITS WCS.
-
+Maintainer: Patrick Chevalley <pch@ap-i.net>
+Build-Depends: debhelper (>= 9), libraw-dev
+Standards-Version: 4.2.1
+Homepage: http://libpasastro.sourceforge.net
 
 Package: libpasastro
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libc6
-Description: Interface Pascal program with standard astronomy libraries.
- libpasgetdss.so : Interface with GetDSS to work with DSS images.
- libpasplan404.so: Interface with Plan404 to compute planets position.
- libpaswcs.so : Interface with libwcs to work with FITS WCS.
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Pascal language friendly interface to astronomy libraries
+ Provide shared libraries to interface Pascal program with 
+ standard astronomy libraries.
+

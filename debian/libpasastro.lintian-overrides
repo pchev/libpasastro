@@ -1,3 +1,0 @@
-# package contain 3 shared libraries
-# they are used by this softwares: skychart, ccdciel, virtualmoon, virtualplanet
-libpasastro binary: package-name-doesnt-match-sonames

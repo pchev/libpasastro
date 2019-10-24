@@ -2,16 +2,15 @@
 Copyright: 2015 Patrick Chevalley <pch@ap-i.net>
 
 Information :
-Name        : pasastrolib
-Version     : 1.0
+Name        : libpasastro
+Version     : 1.0.0
 Release     : 1
 Group       : Sciences/Astronomy
 License     : GPL-2+
+ /usr/share/common-licenses/GPL-2
 Packager    : Patrick Chevalley
-URL         : http://pasastrolib.sourceforge.net
-Summary     : Astronomy libraries for Pascal
+URL         : http://libpasastro.sourceforge.net
+Summary     : Pascal language friendly interface to astronomy libraries
 Description :
-Astronomy libraries with easy Pascal language interface
-to compute planets position, FITS wcs and extract DSS image.
-
-
+Provide shared libraries to interface Pascal program with standard astronomy libraries.
+ 
