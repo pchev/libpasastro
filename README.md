@@ -15,5 +15,6 @@ This libraries are used with the following projects:
 
 Please report any issue at https://www.ap-i.net/mantis/set_project.php?project_id=7
 
-You can download pre-compiled binary from https://sourceforge.net/projects/libpasastro/      
-Or by adding the Skychart apt repository https://www.ap-i.net/skychart/en/documentation/installation_on_linux_debian
+You can download pre-compiled binary without libpasraw.so from https://sourceforge.net/projects/libpasastro/    
+
+Install version with camera raw file support from https://launchpad.net/~pch/+archive/ubuntu/ppa-skychart
