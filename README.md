@@ -36,7 +36,7 @@ cd libpasastro
 
 Then run:
 ```
-make
+make clean all
 sudo make install PREFIX=/usr
 ```
 
