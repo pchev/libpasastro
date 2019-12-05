@@ -21,9 +21,22 @@ Install version with camera raw file support from https://launchpad.net/~pch/+ar
 
 ### Compilation
 
-You need gcc, g++ , make, and libraw-dev
+You need git, gcc, g++ , make, and libraw-dev
 
-Them run:
-- make
-- sudo make install PREFIX=/usr
+This can be installed with the command:
+<pre>
+sudo apt install git build-essential libraw-dev
+</pre>
+
+Get the source code:
+<pre>
+git clone https://github.com/pchev/libpasastro.git
+cd libpasastro
+</pre>
+
+Then run:
+<pre>
+make
+sudo make install PREFIX=/usr
+</pre>
 
