@@ -25,5 +25,5 @@ You need gcc, g++ , make, and libraw-dev
 
 Them run:
 - make
-- sudo make install
+- sudo make install PREFIX=/usr
 
