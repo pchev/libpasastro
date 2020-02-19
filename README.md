@@ -18,3 +18,26 @@ Please report any issue at https://www.ap-i.net/mantis/set_project.php?project_i
 You can download pre-compiled binary without libpasraw.so from https://sourceforge.net/projects/libpasastro/    
 
 Install version with camera raw file support from https://launchpad.net/~pch/+archive/ubuntu/ppa-skychart
+
+### Compilation
+
+You need git, gcc, g++ , make, and libraw-dev
+
+This can be installed with the command:
+```
+sudo apt install git build-essential libraw-dev
+```
+
+Get the source code:
+```
+git clone https://github.com/pchev/libpasastro.git
+cd libpasastro
+```
+
+Then run:
+```
+make clean all
+sudo make install PREFIX=/usr
+sudo ldconfig
+```
+
