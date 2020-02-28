@@ -24,6 +24,10 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
 /usr/lib/libpasplan404.so.1.1
 /usr/lib/libpaswcs.so.1.1
 /usr/lib/libpasraw.so.1.1
+/usr/lib/libpasgetdss.so.1
+/usr/lib/libpasplan404.so.1
+/usr/lib/libpasraw.so.1
+/usr/lib/libpaswcs.so.1
 /usr/share/doc/libpasastro
 
 %post
