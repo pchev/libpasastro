@@ -19,6 +19,7 @@ else
 SOName        = libpasraw.so.1
 SO_Name       = libpasraw.so.1.1
 LIBFLAGS      = -shared -Wl,-soname,$(SOName) 
+#LIBFLAGS      = -L/usr/local/lib -I/usr/local/include -shared -Wl,-soname,$(SOName) 
 # on Linux, use the standard shared library
 LIBS          = -lraw
 endif
