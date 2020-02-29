@@ -4,6 +4,8 @@ This library exist because we cannot link a C++ object directly from Pascal.
 It export C function we can link from Pascal to load a raw buffer and return 
 a pointer to the raw data.
 The rest of the processing is in the Pascal code.
+
+This procedure is tested with "LibRaw 201910 snapshot" it may require adjustement with another version.
  
 LINUX:
 ======
@@ -16,19 +18,14 @@ The distribution libraw package must be installed at runtime.
 
 MAC:
 ====
-The following do not work! compilation work fine but the library do not load at run time.
-Fallback to use only dcraw command line on Mac for now.
-//
-//First install the latest libraw from source:
-// - wget https://www.libraw.org/data/LibRaw-0.19.5.tar.gz
-// - tar xf LibRaw-0.19.5.tar.gz
-// - cd LibRaw-0.19.5
-// - ./configure CPPFLAGS="-mmacosx-version-min=10.10" 
-// - make
-// - sudo make install
-//
-//The Makefile create the library libpasraw.dylib with libraw statically linked.
-//No libraw.dylib is required at runtime.
+First install the latest libraw from source:
+ - Install the LibRaw source code, from tar or from git.
+ - cd LibRaw
+ - make -f Makefile.dist
+ - sudo make -f Makefile.dist install
+
+The Makefile.darwin create the library libpasraw.dylib with libraw statically linked.
+No libraw.dylib is required at runtime.
 
 
 WINDOWS:
@@ -37,30 +34,19 @@ We use cross-compilation from Linux using Mingw.
 Install mingw: sudo apt install mingw-w64
 
 First install the latest libraw from source:
- - wget https://www.libraw.org/data/LibRaw-0.19.5.tar.gz
- - tar xf LibRaw-0.19.5.tar.gz
- - cd LibRaw-0.19.5
- - Unfortunatelly the mingw makefile do not support cross-compilation so we have to use this trick:
-cp Makefile.mingw Makefile.mingw-cross
-sed -i 's/g++/\$\(CPP\)/' Makefile.mingw-cross
-sed -i 's/gcc/\$\(CC\)/' Makefile.mingw-cross
-sed -i 's/ar /\$\(AR\) /' Makefile.mingw-cross
-sed -i 's/ranlib/\$\(RANLIB\)/' Makefile.mingw-cross
-sed -i 's/-DLIBRAW_NODLL/-DLIBRAW_NODLL -static-libgcc -static-libstdc++/' Makefile.mingw-cross
-
-  Then for Win64:
- - make -f Makefile.mingw-cross clean  
-   Ignore error about del command
- - make -f Makefile.mingw-cross CPP=x86_64-w64-mingw32-g++ CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar RANLIB=x86_64-w64-mingw32-ranlib
+ - Install the LibRaw source code, from tar or from git.
+ - cd LibRaw
+Then for Win64:
+ - make -f Makefile.mingw clean
+ - make -f Makefile.mingw CXX=x86_64-w64-mingw32-g++ CC=x86_64-w64-mingw32-gcc library
  - mkdir -p $HOME/mingw/w64/include
  - mkdir -p $HOME/mingw/w64/lib
  - cp -R libraw $HOME/mingw/w64/include/
  - cp lib/libraw.a $HOME/mingw/w64/lib/
  
-  For Win32:
- - make -f Makefile.mingw-cross clean  
-   Ignore error about del command
- - make -f Makefile.mingw-cross CPP=i686-w64-mingw32-g++ CC=i686-w64-mingw32-gcc AR=i686-w64-mingw32-ar RANLIB=i686-w64-mingw32-ranlib
+For Win32:
+ - make -f Makefile.mingw clean
+ - make -f Makefile.mingw CXX=i686-w64-mingw32-g++ CC=i686-w64-mingw32-gcc library
  - mkdir -p $HOME/mingw/w32/include
  - mkdir -p $HOME/mingw/w32/lib
  - cp -R libraw $HOME/mingw/w32/include/
