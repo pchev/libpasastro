@@ -1,3 +1,9 @@
+libpasastro (1.3.0) experimental; urgency=low
+
+  * remove libraw interface, now in separate package
+
+ -- Patrick Chevalley <pch@ap-i.net>  Sun Mar 1 22:01:12 CEST 2020
+
 libpasastro (1.2.0) experimental; urgency=low
 
   * Add libraw interface

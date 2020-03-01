@@ -8,7 +8,7 @@ URL: http://libpasastro.sourceforge.net
 Packager: Patrick Chevalley
 BuildRoot: %_topdir/%{name}
 BuildArch: i386
-Provides: libpasgetdss.so libpasplan404.so libpaswcs.so libpasraw.so
+Provides: libpasgetdss.so libpasplan404.so libpaswcs.so
 AutoReqProv: no
 
 %description
@@ -16,17 +16,14 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
  libpasgetdss.so : Interface with GetDSS to work with DSS images.
  libpasplan404.so: Interface with Plan404 to compute planets position.
  libpaswcs.so    : Interface with libwcs to work with FITS WCS.
- libpasraw.so    : Interface with libraw to decode camera raw files.
 
 %files
 %defattr(-,root,root)
 /usr/lib/libpasgetdss.so.1.1
 /usr/lib/libpasplan404.so.1.1
 /usr/lib/libpaswcs.so.1.1
-/usr/lib/libpasraw.so.1.1
 /usr/lib/libpasgetdss.so.1
 /usr/lib/libpasplan404.so.1
-/usr/lib/libpasraw.so.1
 /usr/lib/libpaswcs.so.1
 /usr/share/doc/libpasastro
 

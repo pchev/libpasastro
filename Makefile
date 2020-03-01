@@ -9,30 +9,25 @@ ifeq ($(OS_TARGET),win32)
 	$(MAKE) -C getdss -f Makefile.win32 all 
 	$(MAKE) -C plan404 -f Makefile.win32 all 
 	$(MAKE) -C wcs -f Makefile.win32 all
-	$(MAKE) -C raw -f Makefile.win32 all
  else
  ifeq ($(OS_TARGET),win64)
 	$(MAKE) -C getdss -f Makefile.win64 all 
 	$(MAKE) -C plan404 -f Makefile.win64 all 
 	$(MAKE) -C wcs -f Makefile.win64 all
-	$(MAKE) -C raw -f Makefile.win64 all
  else
  ifeq ($(CPU_TARGET),i386)
 	$(MAKE) -C getdss all arch_flags=-m32
 	$(MAKE) -C plan404 all arch_flags=-m32
 	$(MAKE) -C wcs all arch_flags=-m32
-	$(MAKE) -C raw all arch_flags=-m32
  else
  ifeq ($(CPU_TARGET),x86_64)
 	$(MAKE) -C getdss all arch_flags=-m64
 	$(MAKE) -C plan404 all arch_flags=-m64
 	$(MAKE) -C wcs all arch_flags=-m64
-	$(MAKE) -C raw all arch_flags=-m64
  else
 	$(MAKE) -C getdss all
 	$(MAKE) -C plan404 all
 	$(MAKE) -C wcs all
-	$(MAKE) -C raw all
  endif
  endif
  endif

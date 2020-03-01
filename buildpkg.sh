@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-version=1.2.2
+version=1.3.0
 
 builddir=/tmp/libpasastro  # Be sure this is set to a non existent directory, it is removed after the run!
 
@@ -30,13 +30,8 @@ fi
 save_PATH=$PATH
 wd=`pwd`
 
-# check if new revision since last run
-if [[ ! -e last.build ]];  then echo 0 > last.build; fi
-read lastrev <last.build
 currentrev=$(git rev-list --count --first-parent HEAD)
 if [[ -z $currentrev ]]; then currentrev=1; fi
-echo $lastrev ' - ' $currentrev
-if [[ $lastrev -ne $currentrev ]]; then
 
 # delete old files
   rm libpasastro*.xz
@@ -209,11 +204,4 @@ if [[ $make_linuxaarch64 ]]; then
 fi
 
 cd $wd
-
-# store revision 
-  echo $currentrev > last.build
-else
-  echo Already build at revision $currentrev
-  exit 4
-fi
 

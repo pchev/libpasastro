@@ -1,6 +1,6 @@
-libpasastro (1.2.0-0ppa1~disco1) disco; urgency=medium
+libpasastro (1.3.0-0ppa1~disco1) disco; urgency=medium
 
-  * Add libraw interface
+  * remove libraw interface, now in separate package
 
- -- Patrick Chevalley <pch@ap-i.net>  Thu, 24 Oct 2019 00:03:54 +0200
+ -- Patrick Chevalley <pch@ap-i.net>  Sun Mar 1 22:01:12 CEST 2020
 

@@ -2,7 +2,7 @@ Source: libpasastro
 Section: education
 Priority: optional
 Maintainer: Patrick Chevalley <pch@ap-i.net>
-Build-Depends: debhelper (>= 9), libraw-dev
+Build-Depends: debhelper (>= 9)
 Standards-Version: 4.2.1
 Homepage: http://libpasastro.sourceforge.net
 
