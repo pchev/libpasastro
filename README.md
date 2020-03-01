@@ -6,6 +6,8 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
 - libpasplan404.so: Interface with Plan404 to compute planets position.
 - libpaswcs.so : Interface with libwcs to work with FITS WCS.
 
+The libraw interface libpasraw is now at: https://github.com/pchev/libpasraw
+
 This libraries are used with the following projects:
 - skychart
 - ccdciel
