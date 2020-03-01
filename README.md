@@ -5,7 +5,6 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
 - libpasgetdss.so : Interface with GetDSS to work with DSS images.
 - libpasplan404.so: Interface with Plan404 to compute planets position.
 - libpaswcs.so : Interface with libwcs to work with FITS WCS.
-- libpasraw.so : Interface with libraw to decode camera raw files.
 
 This libraries are used with the following projects:
 - skychart
@@ -15,17 +14,17 @@ This libraries are used with the following projects:
 
 Please report any issue at https://www.ap-i.net/mantis/set_project.php?project_id=7
 
-You can download pre-compiled binary without libpasraw.so from https://sourceforge.net/projects/libpasastro/    
+You can download pre-compiled binary from https://sourceforge.net/projects/libpasastro/    
 
-Install version with camera raw file support from https://launchpad.net/~pch/+archive/ubuntu/ppa-skychart
+Install version for your Ubuntu system from https://launchpad.net/~pch/+archive/ubuntu/ppa-skychart
 
 ### Compilation
 
-You need git, gcc, g++ , make, and libraw-dev
+You need git, gcc, g++ and make
 
 This can be installed with the command:
 ```
-sudo apt install git build-essential libraw-dev
+sudo apt install git build-essential
 ```
 
 Get the source code:
@@ -34,7 +33,7 @@ git clone https://github.com/pchev/libpasastro.git
 cd libpasastro
 ```
 
-Then run:
+Then compile and install:
 ```
 make clean all
 sudo make install PREFIX=/usr
