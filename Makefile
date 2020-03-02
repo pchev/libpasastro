@@ -1,5 +1,5 @@
 #
-#   Makefile for PasAstroLib 1.0
+#   Makefile for LibPasAstro 1.0
 #
 
 .PHONY: all
@@ -38,18 +38,15 @@ ifeq ($(OS_TARGET),win32)
         $(MAKE) -C getdss -f Makefile.win32 clean
         $(MAKE) -C plan404 -f Makefile.win32 clean
         $(MAKE) -C wcs -f Makefile.win32 clean
-        $(MAKE) -C raw -f Makefile.win32 clean
 else
 ifeq ($(OS_TARGET),win64)
         $(MAKE) -C getdss -f Makefile.win64 clean 
         $(MAKE) -C plan404 -f Makefile.win64 clean
         $(MAKE) -C wcs -f Makefile.win64 clean
-        $(MAKE) -C raw -f Makefile.win64 clean
 else
 	$(MAKE) -C getdss clean
 	$(MAKE) -C plan404 clean
 	$(MAKE) -C wcs clean
-	$(MAKE) -C raw clean
 endif
 endif
 
