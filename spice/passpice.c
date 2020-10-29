@@ -6,7 +6,7 @@
    #include <stdio.h>
    #include "SpiceUsr.h"
    
-   #define     FILE_SIZE 256
+   #define     FILE_SIZE 512
    #define     WORD_SIZE 80
    #define     MSG_SIZE 1024
 
@@ -18,6 +18,7 @@
    double x;		/* output X */
    double y;		/* output Y */
    double z;		/* output Z */
+   char segid[WORD_SIZE]; /* output Segment ID */
    int err;		/* error code */
 };  
 
@@ -44,6 +45,7 @@ char *fn;
       {
          return(1);
       }  
+  return(0);
 }    
 
 void computepos(data)
@@ -56,18 +58,22 @@ struct TSpiceData *data;
    SpiceDouble    state[3];
    SpiceDouble    lt;
    SpiceDouble    et;
-   SpiceChar      targ  [WORD_SIZE];
-   SpiceChar      obs   [WORD_SIZE];
+   SpiceInt       targ;
+   SpiceInt       obs;
    SpiceChar      frame [WORD_SIZE] = "J2000";
    SpiceChar      abcorr[WORD_SIZE] = "LT";
+   SpiceInt       fhandle;
+   SpiceDouble    descr[5];
+   SpiceChar      ident [WORD_SIZE];
+   SpiceBoolean   found;  
  
    reset_c();
    data->err = 0;
    et = data->et;
-   sprintf(obs,"%d",data->obs);
-   sprintf(targ,"%d",data->target);
+   obs = data->obs;
+   targ = data->target;
    
-   spkpos_c ( targ, et, frame, abcorr, obs, state, &lt );
+   spkezp_c ( targ, et, frame, abcorr, obs, state, &lt );
    
    if ( failed_c() )
       {
@@ -78,6 +84,17 @@ struct TSpiceData *data;
    data->x = state[0];
    data->y = state[1];
    data->z = state[2];
+
+   spksfs_c ( targ, et, WORD_SIZE, &fhandle, descr, ident, &found);
+   
+   if (found)
+   {
+      sprintf(data->segid,"%s",ident); 
+   }
+   else
+   {
+      sprintf(data->segid,"%s","Unknown"); 
+   }
    
 }
 
