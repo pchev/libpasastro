@@ -1,3 +1,9 @@
+libpasastro (1.4.1) experimental; urgency=low
+
+  * remove libpasspice replaced by libcalceph
+
+ -- Patrick Chevalley <pch@ap-i.net>  Tue Feb 13 10:07:22 CET 2021
+
 libpasastro (1.4.0) experimental; urgency=low
 
   * add interface to work with NAIF/SPICE kernel

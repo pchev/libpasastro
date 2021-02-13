@@ -16,18 +16,15 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
  libpasgetdss.so : Interface with GetDSS to work with DSS images.
  libpasplan404.so: Interface with Plan404 to compute planets position.
  libpaswcs.so    : Interface with libwcs to work with FITS WCS.
- libpasspice.so  : To work with NAIF/SPICE kernel
 
 %files
 %defattr(-,root,root)
 /usr/lib64/libpasgetdss.so.1.1
 /usr/lib64/libpasplan404.so.1.1
 /usr/lib64/libpaswcs.so.1.1
-/usr/lib64/libpasspice.so.1.1
 /usr/lib64/libpasgetdss.so.1
 /usr/lib64/libpasplan404.so.1
 /usr/lib64/libpaswcs.so.1
-/usr/lib64/libpasspice.so.1
 /usr/share/doc/libpasastro
 
 %post

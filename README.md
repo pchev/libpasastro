@@ -5,9 +5,10 @@ Provide shared libraries to interface Pascal program with standard astronomy lib
 - libpasgetdss.so : Interface with GetDSS to work with DSS images.
 - libpasplan404.so: Interface with Plan404 to compute planets position.
 - libpaswcs.so : Interface with libwcs to work with FITS WCS.
-- libpasspice.so : To work with NAIF/SPICE kernel.
 
 The libraw interface libpasraw is now at: https://github.com/pchev/libpasraw
+
+libpasspice present in version 1.4.0 is replaced by libcalceph: https://github.com/pchev/libcalceph
 
 This libraries are used with the following projects:
 - skychart
