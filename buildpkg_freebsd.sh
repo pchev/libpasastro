@@ -8,10 +8,8 @@ arch=$(uname -m)
 
 wd=`pwd`
 
-currentrev=$(LANG=C svn info . | grep Revision: | sed 's/Revision: //')
-if [[ -z $currentrev ]]; then 
- currentrev=0
-fi
+currentrev=$(git rev-list --count --first-parent HEAD)
+if [[ -z $currentrev ]]; then currentrev=1; fi
 
 # delete old files
   rm libpasastro*.xz
