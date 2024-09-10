@@ -128,6 +128,7 @@ int wcsnum;
 
 int cdcwcs_sky2xy ( p,  wcsnum )
 struct cdcCoord *p;
+int wcsnum;
 {
 double ra, dec, x, y;
 int offscale;  
@@ -150,6 +151,7 @@ return(offscale);
 
 int cdcwcs_xy2sky ( p,  wcsnum )
 struct cdcCoord *p;
+int wcsnum;
 {
 double ra, dec, x, y;
 if (wcs[wcsnum] != NULL ) {

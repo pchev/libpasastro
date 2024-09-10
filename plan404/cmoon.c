@@ -560,6 +560,7 @@ double Rearth =  4.263521245682888527856e-05;
 extern double STR, DTR, J2000;
 int moon1(), moon2(), moon3(), moon4(), chewm(), sscc();
 
+int epsiln();
 
 #if AASUB
 
