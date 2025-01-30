@@ -127,6 +127,7 @@
  */
 
 #include "plantbl.h"
+#include <math.h>
 
 extern int epsiln(double J);
 
@@ -551,7 +552,7 @@ double Rem;
 
 /* Beware of atan2()!
  */
-double floor(), sin(), cos(), asin(), mods3600();
+double mods3600(double);
 
 /* equatorial radius of the earth, in au
  */
@@ -560,7 +561,7 @@ double Rearth =  4.263521245682888527856e-05;
 #define Kearth 6378.137
 
 extern double STR, DTR, J2000;
-int moon1(), moon2(), moon3(), moon4(), chewm(), sscc();
+int moon1(), moon2(), moon3(), moon4(int), chewm(short*,int,int,int,double*), sscc(int,double,int);
 
 
 #if AASUB
@@ -845,7 +846,6 @@ double mods3600(x)
 double x;
 {
 double lx;
-double floor();
 
 lx = x;
 lx = lx - 1296000.0 * floor( lx/1296000.0 );
