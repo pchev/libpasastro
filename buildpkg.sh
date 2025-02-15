@@ -138,8 +138,8 @@ fi
 
 # make Linux arm version
 if [[ $make_linuxarm ]]; then
-  make CPU_TARGET=armv OS_TARGET=linux clean
-  make CPU_TARGET=armv OS_TARGET=linux
+  make CPU_TARGET=arm OS_TARGET=linux clean
+  make CPU_TARGET=arm OS_TARGET=linux
   if [[ $? -ne 0 ]]; then exit 1;fi
   make install PREFIX=$builddir
   if [[ $? -ne 0 ]]; then exit 1;fi
