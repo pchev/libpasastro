@@ -24,6 +24,7 @@ if [[ $arch == armv7l ]]; then
 fi
 if [[ $arch == aarch64 ]]; then 
    make_linuxaarch64=1
+   make_linuxarm=1
 fi
 
 
@@ -137,8 +138,8 @@ fi
 
 # make Linux arm version
 if [[ $make_linuxarm ]]; then
-  make CPU_TARGET=armv7l OS_TARGET=linux clean
-  make CPU_TARGET=armv7l OS_TARGET=linux
+  make CPU_TARGET=armv OS_TARGET=linux clean
+  make CPU_TARGET=armv OS_TARGET=linux
   if [[ $? -ne 0 ]]; then exit 1;fi
   make install PREFIX=$builddir
   if [[ $? -ne 0 ]]; then exit 1;fi
