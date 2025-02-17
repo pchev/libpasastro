@@ -17,8 +17,9 @@ ifneq ($(findstring Darwin,$(OSTYPE)),)
   endif
 else
   ### Linux
-  SO_Name = libgetdss.so
-  LDFLAGS= -shared -lc -Wl,-soname,$(SO_Name) $(arch_flags)    
+  SOName = libpasgetdss.so.1
+  SO_Name = libpasgetdss.so.1.1
+  LDFLAGS= -shared -lc -Wl,-soname,$(SOName) $(arch_flags)    
   ifeq ($(CPU_TARGET),aarch64)
     CC = aarch64-linux-gnu-g++
   endif
